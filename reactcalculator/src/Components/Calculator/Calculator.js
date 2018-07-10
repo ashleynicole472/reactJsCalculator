@@ -1,26 +1,6 @@
 import React, { Component } from 'react';
 import './Calculator.css'
 
-const NUMBER = {
-    one: 1,
-    two: 2,
-    three: 3,
-    four: 4,
-    five: 5,
-    six: 6,
-    seven: 7,
-    eight: 8,
-    nine: 9,
-    zero: 0
-}
-
-const OPERATOR = {
-    add: '+',
-    subtract: '-',
-    divids: '/',
-    multiply: '*'
-}
-
 class Calculator extends Component {
     constructor(props){
         super(props);
@@ -38,13 +18,44 @@ class Calculator extends Component {
                 zero: ''
             },
             operators: {
-                add: '',
-                subtract: '',
-                divide: '',
-                multiply: ''
+                add: '+',
+                subtract: '-',
+                divide: '/',
+                multiply: '*'
             },
             clear: ''
         }
+        this.oneHandleClick = this.oneHandleClick.bind(this);
+        this.twoHandleClick = this.twoHandleClick.bind(this);
+        this.threeHandleClick = this.threeHandleClick.bind(this);
+        this.fourHandleClick = this.fourHandleClick.bind(this);
+        this.fiveHandleClick = this.fiveHandleClick.bind(this);
+        this.sixHandleClick = this.sixHandleClick.bind(this);
+        this.sevenHandleClick = this.sevenHandleClick.bind(this);
+        this.eightHandleClick = this.eightHandleClick.bind(this);
+        this.nineHandleClick = this.nineHandleClick.bind(this);
+        this.zeroHandleClick = this.zeroHandleClick.bind(this);
+        this.clearHandleClick = this.clearHandleClick.bind(this);
+        this.equalsHandleClick = this.equalsHandleClick.bind(this);
+    }
+
+    oneHandleClick = () => {
+        console.log("inside one");
+        this.setState({
+            one: '1'
+        })
+    }
+
+    twoHandleClick = () => {
+        
+    }
+
+    sevenHandleClick = () => {
+        console.log("inside seven");
+        this.setState({
+            seven: '7'
+        })
+        console.log(this.state.seven);
     }
     render(){
         return(
@@ -62,7 +73,8 @@ class Calculator extends Component {
                                 className="form-control form-control-lg currentInput"
                                 type="text"
                                 placeholder=""
-                                id="inputLarge" />
+                                id="inputLarge"
+                                disabled />
                         </div>
                     </div>
                     <div className="col-sm-4"></div>
@@ -75,7 +87,10 @@ class Calculator extends Component {
                             role="toolbar"
                             aria-label="Toolbar with button groups">
                                 <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" className="btn btn-secondary btn-lg">7</button>
+                                    <button
+                                        type="button"
+                                        onClick={this.sevenHandleClick}
+                                        className="btn btn-secondary btn-lg">7</button>
                                 </div>
                         </div>
                     </div>
