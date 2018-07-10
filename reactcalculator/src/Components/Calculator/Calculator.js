@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Calculator.css'
 
 const NUMBER = {
     one: 1,
@@ -47,7 +48,7 @@ class Calculator extends Component {
     }
     render(){
         return(
-            <div>
+            <div className="calculator-container">
                 <div className="row">
                     <div className="col-sm-4">
                     </div>
@@ -86,20 +87,110 @@ class Calculator extends Component {
                         </div>
                     </div>
                     <div className="col-sm-1">
-
+                        <div className="btn-toolbar"
+                            role="toolbar"
+                            aria-label="Toolbar with button groups">
+                                <div className="btn-group mr-2" role="group" aria-label="First group">
+                                    <button type="button" className="btn btn-secondary btn-lg">9</button>
+                                </div>
+                        </div>
                     </div>
                     <div className="col-sm-4"></div>
                 </div>
                 <div className="row">
                     <div className="col-sm-4"></div>
                     <div className="col-sm-1">
-
+                        <div className="btn-toolbar"
+                            role="toolbar"
+                            aria-label="Toolbar with button groups">
+                                <div className="btn-group mr-2" role="group" aria-label="First group">
+                                    <button type="button" className="btn btn-secondary btn-lg">4</button>
+                                </div>
+                        </div>
                     </div>
                     <div className="col-sm-1">
-
+                        <div className="btn-toolbar"
+                            role="toolbar"
+                            aria-label="Toolbar with button groups">
+                                <div className="btn-group mr-2" role="group" aria-label="First group">
+                                    <button type="button" className="btn btn-secondary btn-lg">5</button>
+                                </div>
+                        </div>
                     </div>
                     <div className="col-sm-1">
-
+                        <div className="btn-toolbar"
+                            role="toolbar"
+                            aria-label="Toolbar with button groups">
+                                <div className="btn-group mr-2" role="group" aria-label="First group">
+                                    <button type="button" className="btn btn-secondary btn-lg">6</button>
+                                </div>
+                        </div>
+                    </div>
+                    <div className="col-sm-4"></div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-4"></div>
+                    <div className="col-sm-1">
+                        <div className="btn-toolbar"
+                            role="toolbar"
+                            aria-label="Toolbar with button groups">
+                                <div className="btn-group mr-2" role="group" aria-label="First group">
+                                    <button type="button" className="btn btn-secondary btn-lg">1</button>
+                                </div>
+                        </div>
+                    </div>
+                    <div className="col-sm-1">
+                        <div className="btn-toolbar"
+                            role="toolbar"
+                            aria-label="Toolbar with button groups">
+                                <div className="btn-group mr-2" role="group" aria-label="First group">
+                                    <button type="button" className="btn btn-secondary btn-lg">2</button>
+                                </div>
+                        </div>
+                    </div>
+                    <div className="col-sm-1">
+                        <div className="btn-toolbar"
+                            role="toolbar"
+                            aria-label="Toolbar with button groups">
+                                <div className="btn-group mr-2" role="group" aria-label="First group">
+                                    <button type="button" className="btn btn-secondary btn-lg">3</button>
+                                </div>
+                        </div>
+                    </div>
+                    <div className="col-sm-4"></div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-4"></div>
+                    <div className="col-sm-1">
+                        <div className="btn-toolbar"
+                            role="toolbar"
+                            aria-label="Toolbar with button groups">
+                                <div className="btn-group mr-2" role="group" aria-label="First group">
+                                    <button type="button" className="btn btn-secondary btn-lg">0</button>
+                                </div>
+                        </div>
+                    </div>
+                    <div className="col-md-2">
+                        <div className="btn-group operations" role="group" aria-label="Basic example">
+                            <button type="button" className="btn btn-secondary btn-lg operations">+</button>
+                            <button type="button" className="btn btn-secondary btn-lg operations">−</button>
+                            <button type="button" className="btn btn-secondary btn-lg operations">÷</button>
+                            <button type="button" className="btn btn-secondary btn-lg operations">×</button>
+                        </div>
+                    </div>
+                    <div className="col-sm-4"></div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-4"></div>
+                    <div className="col-sm-3">
+                        <button type="button" className="btn btn-primary btn-lg btn-block">=</button>
+                    </div>
+                    <div className="col-sm-4"></div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-4"></div>
+                    <div className="col-sm-3">
+                    <button type="button" className="btn btn-primary btn-lg btn-block">Clear</button>
                     </div>
                     <div className="col-sm-4"></div>
                 </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CompleteCalculator from './Container/Calculator/Calculator.js';
+import CompleteCalculator from './Components/Calculator/Calculator.js';
 import './App.css';
 
 class App extends Component {
