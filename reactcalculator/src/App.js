@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import CompleteCalculator from './Container/Calculator/Calculator.js';
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div>
-
-      </div>
-    );
-  }
-}
+    render() {
+        return (
+            <div className="App">
+                <CompleteCalculator />
+            </div>
+        );
+      }
+    }
 
 export default App;
