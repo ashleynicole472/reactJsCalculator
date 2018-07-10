@@ -36,7 +36,7 @@ class Calculator extends Component {
         this.nineHandleClick = this.nineHandleClick.bind(this);
         this.zeroHandleClick = this.zeroHandleClick.bind(this);
         this.clearHandleClick = this.clearHandleClick.bind(this);
-        this.equalsHandleClick = this.equalsHandleClick.bind(this);
+        this.equals = this.equals.bind(this);
     }
 
     oneHandleClick = () => {
@@ -47,7 +47,38 @@ class Calculator extends Component {
     }
 
     twoHandleClick = () => {
-        
+        console.log("inside two");
+        this.setState({
+            two: '2'
+        })
+    }
+
+    threeHandleClick = () => {
+        console.log("inside three");
+        this.setState({
+            three: '3'
+        })
+    }
+
+    fourHandleClick = () => {
+        console.log("inside four");
+        this.setState({
+            four: '4'
+        })
+    }
+
+    fiveHandleClick = () => {
+        console.log("inside five");
+        this.setState({
+            five: '5'
+        })
+    }
+
+    sixHandleClick = () => {
+        console.log("inside six");
+        this.setState({
+            six: '6'
+        })
     }
 
     sevenHandleClick = () => {
@@ -56,6 +87,49 @@ class Calculator extends Component {
             seven: '7'
         })
         console.log(this.state.seven);
+    }
+
+    eightHandleClick = () => {
+        console.log("inside eight");
+        this.setState({
+            eight: '8'
+        })
+    }
+
+    nineHandleClick = () => {
+        console.log("inside nine");
+        this.setState({
+            nine: '9'
+        })
+    }
+
+    zeroHandleClick = () => {
+        console.log("inside zero");
+        this.setState({
+            zero: '0'
+        })
+    }
+
+    clearHandleClick = () => {
+        console.log("inside clear");
+        this.setState({
+            numbers: {
+                one: '',
+                two: '',
+                three: '',
+                four: '',
+                five: '',
+                six: '',
+                seven: '',
+                eight: '',
+                nine: '',
+                zero: ''
+            }
+        })
+    }
+
+    equals = () => {
+
     }
     render(){
         return(
@@ -90,14 +164,19 @@ class Calculator extends Component {
                                     <button
                                         type="button"
                                         onClick={this.sevenHandleClick}
-                                        className="btn btn-secondary btn-lg">7</button>
+                                        className="btn btn-secondary btn-lg">7
+                                    </button>
                                 </div>
                         </div>
                     </div>
                     <div className="col-sm-1">
                         <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                             <div className="btn-group mr-2" role="group" aria-label="First group">
-                                <button type="button" className="btn btn-secondary btn-lg">8</button>
+                                <button
+                                    type="button"
+                                    onClick={this.eightHandleClick}
+                                    className="btn btn-secondary btn-lg">8
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -106,7 +185,11 @@ class Calculator extends Component {
                             role="toolbar"
                             aria-label="Toolbar with button groups">
                                 <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" className="btn btn-secondary btn-lg">9</button>
+                                    <button
+                                        type="button"
+                                        onClick={this.nineHandleClick}
+                                        className="btn btn-secondary btn-lg">9
+                                    </button>
                                 </div>
                         </div>
                     </div>
@@ -119,7 +202,11 @@ class Calculator extends Component {
                             role="toolbar"
                             aria-label="Toolbar with button groups">
                                 <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" className="btn btn-secondary btn-lg">4</button>
+                                    <button
+                                        type="button"
+                                        onClick={this.fourHandleClick}
+                                        className="btn btn-secondary btn-lg">4
+                                    </button>
                                 </div>
                         </div>
                     </div>
@@ -128,7 +215,11 @@ class Calculator extends Component {
                             role="toolbar"
                             aria-label="Toolbar with button groups">
                                 <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" className="btn btn-secondary btn-lg">5</button>
+                                    <button
+                                        type="button"
+                                        onClick={this.fiveHandleClick}
+                                        className="btn btn-secondary btn-lg">5
+                                    </button>
                                 </div>
                         </div>
                     </div>
@@ -137,38 +228,11 @@ class Calculator extends Component {
                             role="toolbar"
                             aria-label="Toolbar with button groups">
                                 <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" className="btn btn-secondary btn-lg">6</button>
-                                </div>
-                        </div>
-                    </div>
-                    <div className="col-sm-4"></div>
-                </div>
-                <div className="row">
-                    <div className="col-sm-4"></div>
-                    <div className="col-sm-1">
-                        <div className="btn-toolbar"
-                            role="toolbar"
-                            aria-label="Toolbar with button groups">
-                                <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" className="btn btn-secondary btn-lg">1</button>
-                                </div>
-                        </div>
-                    </div>
-                    <div className="col-sm-1">
-                        <div className="btn-toolbar"
-                            role="toolbar"
-                            aria-label="Toolbar with button groups">
-                                <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" className="btn btn-secondary btn-lg">2</button>
-                                </div>
-                        </div>
-                    </div>
-                    <div className="col-sm-1">
-                        <div className="btn-toolbar"
-                            role="toolbar"
-                            aria-label="Toolbar with button groups">
-                                <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" className="btn btn-secondary btn-lg">3</button>
+                                    <button
+                                        type="button"
+                                        onClick={this.sixHandleClick}
+                                        className="btn btn-secondary btn-lg">6
+                                    </button>
                                 </div>
                         </div>
                     </div>
@@ -181,7 +245,54 @@ class Calculator extends Component {
                             role="toolbar"
                             aria-label="Toolbar with button groups">
                                 <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" className="btn btn-secondary btn-lg">0</button>
+                                    <button
+                                        type="button"
+                                        onClick={this.oneHandleClick}
+                                        className="btn btn-secondary btn-lg">1
+                                    </button>
+                                </div>
+                        </div>
+                    </div>
+                    <div className="col-sm-1">
+                        <div className="btn-toolbar"
+                            role="toolbar"
+                            aria-label="Toolbar with button groups">
+                                <div className="btn-group mr-2" role="group" aria-label="First group">
+                                    <button
+                                        type="button"
+                                        onClick={this.twoHandleClick}
+                                        className="btn btn-secondary btn-lg">2
+                                    </button>
+                                </div>
+                        </div>
+                    </div>
+                    <div className="col-sm-1">
+                        <div className="btn-toolbar"
+                            role="toolbar"
+                            aria-label="Toolbar with button groups">
+                                <div className="btn-group mr-2" role="group" aria-label="First group">
+                                    <button
+                                        type="button"
+                                        onClick={this.threeHandleClick}
+                                        className="btn btn-secondary btn-lg">3
+                                    </button>
+                                </div>
+                        </div>
+                    </div>
+                    <div className="col-sm-4"></div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-4"></div>
+                    <div className="col-sm-1">
+                        <div className="btn-toolbar"
+                            role="toolbar"
+                            aria-label="Toolbar with button groups">
+                                <div className="btn-group mr-2" role="group" aria-label="First group">
+                                    <button
+                                        type="button"
+                                        onClick={this.zeroHandleClick}
+                                        className="btn btn-secondary btn-lg">0
+                                    </button>
                                 </div>
                         </div>
                     </div>
