@@ -8,19 +8,27 @@ class Calculator extends Component {
             equation: [],
             equals: '',
             clear: '',
-            displayString: ''
+            displayString: '',
+            displayValue: '0'
         }
         this.equals = this.equals.bind(this);
         this.buttonClicked = this.buttonClicked.bind(this);
     }
 
-    buttonClicked = (input) => {
-        console.log(`${input} was clicked`);
-        var { equation, displayString } = this.state;
-        displayString += input;
-        equation.push(input);
-        console.log(equation);
-        this.setState({ equation, displayString})
+    buttonClicked = (digit) => {
+        console.log(`${digit} was clicked`);
+        var { equation, displayValue } = this.state;
+        //allows the display number to change from 0 to whatever
+        //digit the user pressed, can be more then just one single digit at a time
+        //if the display number is zero then leave it at zero else change to the
+        //selected digets
+        this.setState({
+            displayValue: displayValue === '0' ? String(digit) : displayValue + digit
+        })
+        // displayValue += digit;
+        // equation.push(digit);
+        // console.log(equation);
+
     };
 
     equals = () => {
@@ -32,36 +40,37 @@ class Calculator extends Component {
             case "+":
                 var answer = num1 + num2;
                 this.setState({
-                    displayString: answer
+                    displayValue: answer
                 })
             break;
             case "-":
                 var answer = num1 - num2;
                 this.setState({
-                    displayString: answer
+                    displayValue: answer
                 })
             break;
             case "*":
                 var answer = num1 * num2;
                 this.setState({
-                    displayString: answer
+                    displayValue: answer
                 })
             break;
             case "/":
                 var answer = num1 / num2;
                 this.setState({
-                    displayString: answer
+                    displayValue: answer
                 })
             break
             default:
                 var answer = "err";
                 this.setState({
-                    displayString: answer
+                    displayValue: answer
                 })
             break;
         }
     }
     render(){
+        const { displayValue } = this.state
         return(
             <div className="calculator-container">
                 <div className="row">
@@ -76,7 +85,7 @@ class Calculator extends Component {
                             <input
                                 className="form-control form-control-lg currentInput"
                                 type="text"
-                                placeholder={this.state.displayString}
+                                placeholder={displayValue}
                                 id="inputLarge"
                                 disabled />
                         </div>
