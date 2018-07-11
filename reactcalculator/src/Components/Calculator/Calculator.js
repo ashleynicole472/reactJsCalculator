@@ -7,7 +7,8 @@ class Calculator extends Component {
         this.state ={
             equation: [],
             equals: '',
-            clear: ''
+            clear: '',
+            displayString: ''
         }
         this.equals = this.equals.bind(this);
         this.buttonClicked = this.buttonClicked.bind(this);
@@ -15,10 +16,11 @@ class Calculator extends Component {
 
     buttonClicked = (input) => {
         console.log(`${input} was clicked`);
-        var { equation } = this.state;
-        equation.push(input)
+        var { equation, displayString } = this.state;
+        displayString += input;
+        equation.push(input);
         console.log(equation);
-        this.setState({ equation })
+        this.setState({ equation, displayString})
     };
 
     equals = () => {
@@ -30,31 +32,31 @@ class Calculator extends Component {
             case "+":
                 var answer = num1 + num2;
                 this.setState({
-                    equals: answer
+                    displayString: answer
                 })
             break;
             case "-":
                 var answer = num1 - num2;
                 this.setState({
-                    equals: answer
+                    displayString: answer
                 })
             break;
             case "*":
                 var answer = num1 * num2;
                 this.setState({
-                    equals: answer
+                    displayString: answer
                 })
             break;
             case "/":
                 var answer = num1 / num2;
                 this.setState({
-                    equals: answer
+                    displayString: answer
                 })
             break
             default:
                 var answer = "err";
                 this.setState({
-                    equals: answer
+                    displayString: answer
                 })
             break;
         }
@@ -74,7 +76,7 @@ class Calculator extends Component {
                             <input
                                 className="form-control form-control-lg currentInput"
                                 type="text"
-                                placeholder={this.state.equals}
+                                placeholder={this.state.displayString}
                                 id="inputLarge"
                                 disabled />
                         </div>
