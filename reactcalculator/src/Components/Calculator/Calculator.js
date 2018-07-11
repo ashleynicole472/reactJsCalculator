@@ -5,7 +5,6 @@ class Calculator extends Component {
     constructor(props){
         super(props);
         this.state ={
-            equation: [],
             equals: '',
             displayValue: '0',
         }
@@ -16,7 +15,7 @@ class Calculator extends Component {
     }
 
     buttonClicked = (digit) => {
-        console.log(`${digit} was clicked`);
+        // console.log(`${digit} was clicked`);
         var { equation, displayValue } = this.state;
         //allows the display number to change from 0 to whatever
         //digit the user pressed, can be more then just one single digit at a time
@@ -25,7 +24,7 @@ class Calculator extends Component {
         this.setState({
             displayValue: displayValue === '0' ? String(digit) : displayValue + digit
         })
-        console.log(this.state.displayValue);
+        // console.log(this.state.displayValue);
     };
 
     dotClicked = () => {
@@ -43,7 +42,7 @@ class Calculator extends Component {
 
     clearDisplay = () => {
         var { displayValue } = this.state
-
+        //resets the state to '0' whenever the clear button is hit by the user
         this.setState({
             displayValue: '0'
         })
@@ -59,43 +58,7 @@ class Calculator extends Component {
         this.setState({
             displayValue: finalEquation
         })
-        console.log(`${this.state.finalTotal} this is the sate for final total`);
-        // var finalEquation = this.state.equation
-        // var num1 = finalEquation[0]
-        // var num2 = finalEquation[2]
-        // var operation = finalEquation[1]
-        // switch(operation){
-        //     case "+":
-        //         var answer = num1 + num2;
-        //         this.setState({
-        //             displayValue: answer
-        //         })
-        //     break;
-        //     case "-":
-        //         var answer = num1 - num2;
-        //         this.setState({
-        //             displayValue: answer
-        //         })
-        //     break;
-        //     case "*":
-        //         var answer = num1 * num2;
-        //         this.setState({
-        //             displayValue: answer
-        //         })
-        //     break;
-        //     case "/":
-        //         var answer = num1 / num2;
-        //         this.setState({
-        //             displayValue: answer
-        //         })
-        //     break
-        //     default:
-        //         var answer = "err";
-        //         this.setState({
-        //             displayValue: answer
-        //         })
-        //     break;
-        // }
+        // console.log(`${this.state.finalTotal} this is the sate for final total`);
     }
     render(){
         const { displayValue } = this.state
