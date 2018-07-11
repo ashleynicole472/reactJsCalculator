@@ -15,6 +15,7 @@ class Calculator extends Component {
         this.dotClicked = this.dotClicked.bind(this);
         this.clearDisplay = this.clearDisplay.bind(this);
         this.operationClicked = this.operationClicked.bind(this);
+        this.toggleNegitive = this.toggleNegitive.bind(this);
     }
 
     buttonClicked = (digit) => {
@@ -41,6 +42,18 @@ class Calculator extends Component {
                 displayValue: displayValue + '.'
             })
         }
+    }
+
+    toggleNegitive = () => {
+        var { displayValue } = this.state
+
+        this.setState({
+            //.charAt returns the digit at the beginning index within the displayValue string
+            //and checks if there is a negitive sign
+            // if there is then the .substr will push that digit to the 1 index instead of it being in the
+            //zero index because thats where the negitive sign will be.
+            displayValue: displayValue.charAt(0) === '-' ? displayValue.substr(1) : '-' + displayValue
+        })
     }
 
     clearDisplay = () => {
@@ -101,6 +114,7 @@ class Calculator extends Component {
                         </button>
                         <button
                             type="button"
+                            onClick={() => this.toggleNegitive()}
                             className="btn btn-secondary top-row">+ / -
                         </button>
                         <button
@@ -109,7 +123,7 @@ class Calculator extends Component {
                         </button>
                         <button
                             type="button"
-                            onClick={() => this.operationClicked("/")}
+                            onClick={() => this.buttonClicked("/")}
                             id="division-button"
                             className="btn btn-warning operations">÷
                         </button>
@@ -136,7 +150,7 @@ class Calculator extends Component {
                         </button>
                         <button
                             type="button"
-                            onClick={() => this.operationClicked("*")}
+                            onClick={() => this.buttonClicked("*")}
                             className="btn btn-warning middle-row">x
                         </button>
                     </div>
@@ -162,7 +176,7 @@ class Calculator extends Component {
                         </button>
                         <button
                             type="button"
-                            onClick={() => this.operationClicked("-")}
+                            onClick={() => this.buttonClicked("-")}
                             className="btn btn-warning middle-row">−
                         </button>
                     </div>
@@ -188,7 +202,7 @@ class Calculator extends Component {
                         </button>
                         <button
                             type="button"
-                            onClick={() => this.operationClicked("+")}
+                            onClick={() => this.buttonClicked("+")}
                             className="btn btn-warning middle-row">+
                         </button>
                     </div>
