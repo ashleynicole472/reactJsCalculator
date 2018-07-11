@@ -7,11 +7,14 @@ class Calculator extends Component {
         this.state ={
             equals: '',
             displayValue: '0',
+            waitingForOperator: false,
+            operator: null
         }
         this.equals = this.equals.bind(this);
         this.buttonClicked = this.buttonClicked.bind(this);
         this.dotClicked = this.dotClicked.bind(this);
         this.clearDisplay = this.clearDisplay.bind(this);
+        this.operationClicked = this.operationClicked.bind(this);
     }
 
     buttonClicked = (digit) => {
@@ -46,6 +49,10 @@ class Calculator extends Component {
         this.setState({
             displayValue: '0'
         })
+    }
+
+    operationClicked = (operator) => {
+        console.log(operator);
     }
 
     equals = () => {
@@ -84,200 +91,131 @@ class Calculator extends Component {
                     <div className="col-sm-4"></div>
                 </div>
                 <div className="row">
-                    <div className="col-sm-4">
+                    <div className="col-sm-3"></div>
+                    <div className="col-sm-5">
+                        <button
+                            type="button"
+                            onClick={() => this.clearDisplay()}
+                            id="clear-button"
+                            className="btn btn-secondary top-row">C
+                        </button>
+                        <button
+                            type="button"
+                            className="btn btn-secondary top-row">+ / -
+                        </button>
+                        <button
+                            type="button"
+                            className="btn btn-secondary top-row">%
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => this.operationClicked("/")}
+                            id="division-button"
+                            className="btn btn-warning operations">÷
+                        </button>
                     </div>
-                    <div className="col-sm-1">
-                        <div className="btn-toolbar"
-                            role="toolbar"
-                            aria-label="Toolbar with button groups">
-                                <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button
-                                        type="button"
-                                        onClick={() => this.buttonClicked(7)}
-                                        className="btn btn-secondary btn-lg">7
-                                    </button>
-                                </div>
-                        </div>
-                    </div>
-                    <div className="col-sm-1">
-                        <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                            <div className="btn-group mr-2" role="group" aria-label="First group">
-                                <button
-                                    type="button"
-                                    onClick={() => this.buttonClicked(8)}
-                                    className="btn btn-secondary btn-lg">8
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-sm-1">
-                        <div className="btn-toolbar"
-                            role="toolbar"
-                            aria-label="Toolbar with button groups">
-                                <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button
-                                        type="button"
-                                        onClick={() => this.buttonClicked(9)}
-                                        className="btn btn-secondary btn-lg">9
-                                    </button>
-                                </div>
-                        </div>
-                    </div>
-                    <div className="col-sm-4"></div>
+                    <div className="col-sm-3"></div>
                 </div>
                 <div className="row">
-                    <div className="col-sm-4"></div>
-                    <div className="col-sm-1">
-                        <div className="btn-toolbar"
-                            role="toolbar"
-                            aria-label="Toolbar with button groups">
-                                <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button
-                                        type="button"
-                                        onClick={() => this.buttonClicked(4)}
-                                        className="btn btn-secondary btn-lg">4
-                                    </button>
-                                </div>
-                        </div>
+                    <div className="col-sm-3"></div>
+                    <div className="col-sm-5">
+                        <button
+                            type="button"
+                            onClick={() => this.buttonClicked(7)}
+                            className="btn btn-info middle-row">7
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => this.buttonClicked(8)}
+                            className="btn btn-info middle-row">8
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => this.buttonClicked(9)}
+                            className="btn btn-info middle-row">9
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => this.operationClicked("*")}
+                            className="btn btn-warning middle-row">x
+                        </button>
                     </div>
-                    <div className="col-sm-1">
-                        <div className="btn-toolbar"
-                            role="toolbar"
-                            aria-label="Toolbar with button groups">
-                                <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button
-                                        type="button"
-                                        onClick={() => this.buttonClicked(5)}
-                                        className="btn btn-secondary btn-lg">5
-                                    </button>
-                                </div>
-                        </div>
-                    </div>
-                    <div className="col-sm-1">
-                        <div className="btn-toolbar"
-                            role="toolbar"
-                            aria-label="Toolbar with button groups">
-                                <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button
-                                        type="button"
-                                        onClick={() => this.buttonClicked(6)}
-                                        className="btn btn-secondary btn-lg">6
-                                    </button>
-                                </div>
-                        </div>
-                    </div>
-                    <div className="col-sm-4"></div>
+                    <div className="col-sm-3"></div>
                 </div>
                 <div className="row">
-                    <div className="col-sm-4"></div>
-                    <div className="col-sm-1">
-                        <div className="btn-toolbar"
-                            role="toolbar"
-                            aria-label="Toolbar with button groups">
-                                <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button
-                                        type="button"
-                                        onClick={() => this.buttonClicked(1)}
-                                        className="btn btn-secondary btn-lg">1
-                                    </button>
-                                </div>
-                        </div>
+                    <div className="col-sm-3"></div>
+                    <div className="col-sm-5">
+                        <button
+                            type="button"
+                            onClick={() => this.buttonClicked(4)}
+                            className="btn btn-info middle-row"> 4
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => this.buttonClicked(5)}
+                            className="btn btn-info middle-row">5
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => this.buttonClicked(6)}
+                            className="btn btn-info middle-row">6
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => this.operationClicked("-")}
+                            className="btn btn-warning middle-row">−
+                        </button>
                     </div>
-                    <div className="col-sm-1">
-                        <div className="btn-toolbar"
-                            role="toolbar"
-                            aria-label="Toolbar with button groups">
-                                <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button
-                                        type="button"
-                                        onClick={() => this.buttonClicked(2)}
-                                        className="btn btn-secondary btn-lg">2
-                                    </button>
-                                </div>
-                        </div>
-                    </div>
-                    <div className="col-sm-1">
-                        <div className="btn-toolbar"
-                            role="toolbar"
-                            aria-label="Toolbar with button groups">
-                                <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button
-                                        type="button"
-                                        onClick={() => this.buttonClicked(3)}
-                                        className="btn btn-secondary btn-lg">3
-                                    </button>
-                                </div>
-                        </div>
-                    </div>
-                    <div className="col-sm-4"></div>
+                    <div className="col-sm-3"></div>
                 </div>
                 <div className="row">
-                    <div className="col-sm-4"></div>
-                    <div className="col-sm-1">
-                        <div className="btn-toolbar"
-                            role="toolbar"
-                            aria-label="Toolbar with button groups">
-                                <div className="btn-group mr-2" role="group" aria-label="First group">
-                                    <button
-                                        type="button"
-                                        onClick={() => this.buttonClicked(0)}
-                                        className="btn btn-secondary btn-lg">0
-                                    </button>
-                                </div>
-                        </div>
+                    <div className="col-sm-3"></div>
+                    <div className="col-sm-5">
+                        <button
+                            type="button"
+                            onClick={() => this.buttonClicked(1)}
+                            className="btn btn-info middle-row">1
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => this.buttonClicked(2)}
+                            className="btn btn-info middle-row">2
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => this.buttonClicked(3)}
+                            className="btn btn-info middle-row">3
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => this.operationClicked("+")}
+                            className="btn btn-warning middle-row">+
+                        </button>
                     </div>
-                    <div className="col-md-2">
-                        <div className="btn-group operations" role="group" aria-label="Basic example">
-                            <button
-                                type="button"
-                                onClick={() => this.dotClicked(".")}
-                                className="btn btn-secondary btn-lg operations">.
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => this.buttonClicked("+")}
-                                className="btn btn-secondary btn-lg operations">+
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => this.buttonClicked("-")}
-                                className="btn btn-secondary btn-lg operations">−
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => this.buttonClicked("/")}
-                                className="btn btn-secondary btn-lg operations">÷
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => this.buttonClicked("*")}
-                                className="btn btn-secondary btn-lg operations">×
-                            </button>
-                        </div>
-                    </div>
-                    <div className="col-sm-4"></div>
+                    <div className="col-sm-3"></div>
                 </div>
                 <div className="row">
-                    <div className="col-sm-4"></div>
-                    <div className="col-sm-3">
+                    <div className="col-sm-3"></div>
+                    <div className="col-sm-5">
+                        <button
+                            type="button"
+                            onClick={() => this.buttonClicked(0)}
+                            id="zero-button"
+                            className="btn btn-info bottom-row ">0
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => this.dotClicked(".")}
+                            className="btn btn-info bottom-row">.
+                        </button>
                         <button
                             type="button"
                             onClick={() => this.equals()}
-                            className="btn btn-primary btn-lg btn-block">=
+                            id="equals-button"
+                            className="btn btn-info bottom-row ">=
                         </button>
                     </div>
-                    <div className="col-sm-4"></div>
-                </div>
-                <div className="row">
-                    <div className="col-sm-4"></div>
-                    <div className="col-sm-3">
-                    <button
-                        type="button"
-                        onClick={() => this.clearDisplay()}
-                        className="btn btn-primary btn-lg btn-block">Clear
-                    </button>
-                    </div>
-                    <div className="col-sm-4"></div>
+                    <div className="col-sm-3"></div>
                 </div>
             </div>
         )

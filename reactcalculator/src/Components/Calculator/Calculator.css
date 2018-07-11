@@ -1,20 +1,49 @@
-.btn-lg {
-    margin-right: 70px;
-}
-
-.btn-toolbar {
-    margin-top: 15px;
-    margin-left: 25px;
+.btn {
+    margin-right: 10px;
+    font-size: 25px;
 }
 
 .row {
     margin-top: 15px;
 }
 
-.operations {
-    margin-right: 1px;
-    margin-left: -10px;
+.top-row {
+    margin-right: 9px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.middle-row {
+    margin-right: 9px;
+    margin-left: 15px;
     margin-top: 7px;
     margin-bottom: 5px;
-    color: #ffa000 !important;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+#inputLarge {
+    font-size: 75px;
+}
+
+#zero-button {
+    padding-left: 65px;
+    padding-right: 70px;
+}
+
+#equals-button {
+    padding-left: 55px;
+    padding-right: 75px;
+}
+
+#clear-button {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#division-button {
+    padding-right: 20px;
+    padding-left: 20px;
 }
