@@ -7,12 +7,12 @@ class Calculator extends Component {
         this.state ={
             equation: [],
             equals: '',
-            clear: '',
             displayValue: '0'
         }
         this.equals = this.equals.bind(this);
         this.buttonClicked = this.buttonClicked.bind(this);
         this.dotClicked = this.dotClicked.bind(this);
+        this.clearDisplay = this.clearDisplay.bind(this);
     }
 
     buttonClicked = (digit) => {
@@ -38,7 +38,14 @@ class Calculator extends Component {
                 displayValue: displayValue + '.'
             })
         }
+    }
 
+    clearDisplay = () => {
+        var { displayValue } = this.state
+
+        this.setState({
+            displayValue: '0'
+        })
     }
 
     equals = () => {
@@ -292,7 +299,7 @@ class Calculator extends Component {
                     <div className="col-sm-3">
                     <button
                         type="button"
-                        onClick={this.clearHandleClick}
+                        onClick={() => this.clearDisplay()}
                         className="btn btn-primary btn-lg btn-block">Clear
                     </button>
                     </div>
