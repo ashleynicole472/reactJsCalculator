@@ -8,11 +8,11 @@ class Calculator extends Component {
             equation: [],
             equals: '',
             clear: '',
-            displayString: '',
             displayValue: '0'
         }
         this.equals = this.equals.bind(this);
         this.buttonClicked = this.buttonClicked.bind(this);
+        this.dotClicked = this.dotClicked.bind(this);
     }
 
     buttonClicked = (digit) => {
@@ -25,11 +25,21 @@ class Calculator extends Component {
         this.setState({
             displayValue: displayValue === '0' ? String(digit) : displayValue + digit
         })
-        // displayValue += digit;
-        // equation.push(digit);
-        // console.log(equation);
-
     };
+
+    dotClicked = () => {
+        var { displayValue } = this.state
+        //allows for only one decimal point to be within the selected digits
+        //indexOf function finds whatever argument is within the perentesis and checks if
+        //its within the given string.
+        if(displayValue.indexOf('.') === -1){
+            this.setState({
+                //makes displayValue whatever it previously was plus a decimal
+                displayValue: displayValue + '.'
+            })
+        }
+
+    }
 
     equals = () => {
         var finalEquation = this.state.equation
@@ -237,6 +247,11 @@ class Calculator extends Component {
                     </div>
                     <div className="col-md-2">
                         <div className="btn-group operations" role="group" aria-label="Basic example">
+                            <button
+                                type="button"
+                                onClick={() => this.dotClicked(".")}
+                                className="btn btn-secondary btn-lg operations">.
+                            </button>
                             <button
                                 type="button"
                                 onClick={() => this.buttonClicked("+")}
