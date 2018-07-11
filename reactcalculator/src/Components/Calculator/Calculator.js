@@ -8,7 +8,6 @@ class Calculator extends Component {
             equation: [],
             equals: '',
             displayValue: '0',
-            finalTotal: ''
         }
         this.equals = this.equals.bind(this);
         this.buttonClicked = this.buttonClicked.bind(this);
@@ -51,15 +50,14 @@ class Calculator extends Component {
     }
 
     equals = () => {
-        var { displayValue, finalTotal } = this.state;
+        var { displayValue } = this.state;
         //eval() will evaluate a string. example: eval("2 + 2") = 4
         //assigning a new variable to evaluate the string from the displayValue
         //will provide the total for the user of the digits entered
         var finalEquation = eval(displayValue);
         //set state to the final total and display that total on the input field
         this.setState({
-            displayValue: finalEquation,
-            finalTotal: finalEquation
+            displayValue: finalEquation
         })
         console.log(`${this.state.finalTotal} this is the sate for final total`);
         // var finalEquation = this.state.equation
