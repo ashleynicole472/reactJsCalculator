@@ -5,131 +5,59 @@ class Calculator extends Component {
     constructor(props){
         super(props);
         this.state ={
-            numbers: {
-                one: '',
-                two: '',
-                three: '',
-                four: '',
-                five: '',
-                six: '',
-                seven: '',
-                eight: '',
-                nine: '',
-                zero: ''
-            },
-            operators: {
-                add: '+',
-                subtract: '-',
-                divide: '/',
-                multiply: '*'
-            },
+            equation: [],
+            equals: '',
             clear: ''
         }
-        this.oneHandleClick = this.oneHandleClick.bind(this);
-        this.twoHandleClick = this.twoHandleClick.bind(this);
-        this.threeHandleClick = this.threeHandleClick.bind(this);
-        this.fourHandleClick = this.fourHandleClick.bind(this);
-        this.fiveHandleClick = this.fiveHandleClick.bind(this);
-        this.sixHandleClick = this.sixHandleClick.bind(this);
-        this.sevenHandleClick = this.sevenHandleClick.bind(this);
-        this.eightHandleClick = this.eightHandleClick.bind(this);
-        this.nineHandleClick = this.nineHandleClick.bind(this);
-        this.zeroHandleClick = this.zeroHandleClick.bind(this);
-        this.clearHandleClick = this.clearHandleClick.bind(this);
         this.equals = this.equals.bind(this);
+        this.buttonClicked = this.buttonClicked.bind(this);
     }
 
-    oneHandleClick = () => {
-        console.log("inside one");
-        this.setState({
-            one: '1'
-        })
-    }
-
-    twoHandleClick = () => {
-        console.log("inside two");
-        this.setState({
-            two: '2'
-        })
-    }
-
-    threeHandleClick = () => {
-        console.log("inside three");
-        this.setState({
-            three: '3'
-        })
-    }
-
-    fourHandleClick = () => {
-        console.log("inside four");
-        this.setState({
-            four: '4'
-        })
-    }
-
-    fiveHandleClick = () => {
-        console.log("inside five");
-        this.setState({
-            five: '5'
-        })
-    }
-
-    sixHandleClick = () => {
-        console.log("inside six");
-        this.setState({
-            six: '6'
-        })
-    }
-
-    sevenHandleClick = () => {
-        console.log("inside seven");
-        this.setState({
-            seven: '7'
-        })
-        console.log(this.state.seven);
-    }
-
-    eightHandleClick = () => {
-        console.log("inside eight");
-        this.setState({
-            eight: '8'
-        })
-    }
-
-    nineHandleClick = () => {
-        console.log("inside nine");
-        this.setState({
-            nine: '9'
-        })
-    }
-
-    zeroHandleClick = () => {
-        console.log("inside zero");
-        this.setState({
-            zero: '0'
-        })
-    }
-
-    clearHandleClick = () => {
-        console.log("inside clear");
-        this.setState({
-            numbers: {
-                one: '',
-                two: '',
-                three: '',
-                four: '',
-                five: '',
-                six: '',
-                seven: '',
-                eight: '',
-                nine: '',
-                zero: ''
-            }
-        })
-    }
+    buttonClicked = (input) => {
+        console.log(`${input} was clicked`);
+        var { equation } = this.state;
+        equation.push(input)
+        console.log(equation);
+        this.setState({ equation })
+    };
 
     equals = () => {
-
+        var finalEquation = this.state.equation
+        var num1 = finalEquation[0]
+        var num2 = finalEquation[2]
+        var operation = finalEquation[1]
+        switch(operation){
+            case "+":
+                var answer = num1 + num2;
+                this.setState({
+                    equals: answer
+                })
+            break;
+            case "-":
+                var answer = num1 - num2;
+                this.setState({
+                    equals: answer
+                })
+            break;
+            case "*":
+                var answer = num1 * num2;
+                this.setState({
+                    equals: answer
+                })
+            break;
+            case "/":
+                var answer = num1 / num2;
+                this.setState({
+                    equals: answer
+                })
+            break
+            default:
+                var answer = "err";
+                this.setState({
+                    equals: answer
+                })
+            break;
+        }
     }
     render(){
         return(
@@ -146,7 +74,7 @@ class Calculator extends Component {
                             <input
                                 className="form-control form-control-lg currentInput"
                                 type="text"
-                                placeholder=""
+                                placeholder={this.state.equals}
                                 id="inputLarge"
                                 disabled />
                         </div>
@@ -163,7 +91,7 @@ class Calculator extends Component {
                                 <div className="btn-group mr-2" role="group" aria-label="First group">
                                     <button
                                         type="button"
-                                        onClick={this.sevenHandleClick}
+                                        onClick={() => this.buttonClicked(7)}
                                         className="btn btn-secondary btn-lg">7
                                     </button>
                                 </div>
@@ -174,7 +102,7 @@ class Calculator extends Component {
                             <div className="btn-group mr-2" role="group" aria-label="First group">
                                 <button
                                     type="button"
-                                    onClick={this.eightHandleClick}
+                                    onClick={() => this.buttonClicked(8)}
                                     className="btn btn-secondary btn-lg">8
                                 </button>
                             </div>
@@ -187,7 +115,7 @@ class Calculator extends Component {
                                 <div className="btn-group mr-2" role="group" aria-label="First group">
                                     <button
                                         type="button"
-                                        onClick={this.nineHandleClick}
+                                        onClick={() => this.buttonClicked(9)}
                                         className="btn btn-secondary btn-lg">9
                                     </button>
                                 </div>
@@ -204,7 +132,7 @@ class Calculator extends Component {
                                 <div className="btn-group mr-2" role="group" aria-label="First group">
                                     <button
                                         type="button"
-                                        onClick={this.fourHandleClick}
+                                        onClick={() => this.buttonClicked(4)}
                                         className="btn btn-secondary btn-lg">4
                                     </button>
                                 </div>
@@ -217,7 +145,7 @@ class Calculator extends Component {
                                 <div className="btn-group mr-2" role="group" aria-label="First group">
                                     <button
                                         type="button"
-                                        onClick={this.fiveHandleClick}
+                                        onClick={() => this.buttonClicked(5)}
                                         className="btn btn-secondary btn-lg">5
                                     </button>
                                 </div>
@@ -230,7 +158,7 @@ class Calculator extends Component {
                                 <div className="btn-group mr-2" role="group" aria-label="First group">
                                     <button
                                         type="button"
-                                        onClick={this.sixHandleClick}
+                                        onClick={() => this.buttonClicked(6)}
                                         className="btn btn-secondary btn-lg">6
                                     </button>
                                 </div>
@@ -247,7 +175,7 @@ class Calculator extends Component {
                                 <div className="btn-group mr-2" role="group" aria-label="First group">
                                     <button
                                         type="button"
-                                        onClick={this.oneHandleClick}
+                                        onClick={() => this.buttonClicked(1)}
                                         className="btn btn-secondary btn-lg">1
                                     </button>
                                 </div>
@@ -260,7 +188,7 @@ class Calculator extends Component {
                                 <div className="btn-group mr-2" role="group" aria-label="First group">
                                     <button
                                         type="button"
-                                        onClick={this.twoHandleClick}
+                                        onClick={() => this.buttonClicked(2)}
                                         className="btn btn-secondary btn-lg">2
                                     </button>
                                 </div>
@@ -273,7 +201,7 @@ class Calculator extends Component {
                                 <div className="btn-group mr-2" role="group" aria-label="First group">
                                     <button
                                         type="button"
-                                        onClick={this.threeHandleClick}
+                                        onClick={() => this.buttonClicked(3)}
                                         className="btn btn-secondary btn-lg">3
                                     </button>
                                 </div>
@@ -290,7 +218,7 @@ class Calculator extends Component {
                                 <div className="btn-group mr-2" role="group" aria-label="First group">
                                     <button
                                         type="button"
-                                        onClick={this.zeroHandleClick}
+                                        onClick={() => this.buttonClicked(0)}
                                         className="btn btn-secondary btn-lg">0
                                     </button>
                                 </div>
@@ -298,10 +226,26 @@ class Calculator extends Component {
                     </div>
                     <div className="col-md-2">
                         <div className="btn-group operations" role="group" aria-label="Basic example">
-                            <button type="button" className="btn btn-secondary btn-lg operations">+</button>
-                            <button type="button" className="btn btn-secondary btn-lg operations">−</button>
-                            <button type="button" className="btn btn-secondary btn-lg operations">÷</button>
-                            <button type="button" className="btn btn-secondary btn-lg operations">×</button>
+                            <button
+                                type="button"
+                                onClick={() => this.buttonClicked("+")}
+                                className="btn btn-secondary btn-lg operations">+
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => this.buttonClicked("-")}
+                                className="btn btn-secondary btn-lg operations">−
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => this.buttonClicked("/")}
+                                className="btn btn-secondary btn-lg operations">÷
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => this.buttonClicked("*")}
+                                className="btn btn-secondary btn-lg operations">×
+                            </button>
                         </div>
                     </div>
                     <div className="col-sm-4"></div>
@@ -309,14 +253,22 @@ class Calculator extends Component {
                 <div className="row">
                     <div className="col-sm-4"></div>
                     <div className="col-sm-3">
-                        <button type="button" className="btn btn-primary btn-lg btn-block">=</button>
+                        <button
+                            type="button"
+                            onClick={this.equals}
+                            className="btn btn-primary btn-lg btn-block">=
+                        </button>
                     </div>
                     <div className="col-sm-4"></div>
                 </div>
                 <div className="row">
                     <div className="col-sm-4"></div>
                     <div className="col-sm-3">
-                    <button type="button" className="btn btn-primary btn-lg btn-block">Clear</button>
+                    <button
+                        type="button"
+                        onClick={this.clearHandleClick}
+                        className="btn btn-primary btn-lg btn-block">Clear
+                    </button>
                     </div>
                     <div className="col-sm-4"></div>
                 </div>
