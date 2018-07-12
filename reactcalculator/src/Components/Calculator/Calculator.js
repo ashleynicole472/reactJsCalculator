@@ -27,9 +27,9 @@ class Calculator extends Component {
         //else if the user has not selected an operation yet then allow the display to still have the zero or be updated with the
         //users selected digits.
         if(waitingForOperator){
-
             this.setState({
-                displayValue: String(digit)
+                displayValue: String(digit),
+                waitingForOperator: false
             })
         } else {
             this.setState({
@@ -54,10 +54,11 @@ class Calculator extends Component {
                 displayValue: '.',
                 waitingForOperator: false
             })
-        } else {(displayValue.indexOf('.') === -1)
+        } else if(displayValue.indexOf('.') === -1){
             this.setState({
                 //makes displayValue whatever it previously was plus a decimal at the index the user selected
-                displayValue: displayValue + '.'
+                displayValue: displayValue + '.',
+                waitingForOperator: false
             })
         }
     }
