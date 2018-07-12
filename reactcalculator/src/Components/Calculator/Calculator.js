@@ -16,6 +16,7 @@ class Calculator extends Component {
         this.clearDisplay = this.clearDisplay.bind(this);
         this.operationClicked = this.operationClicked.bind(this);
         this.toggleNegitive = this.toggleNegitive.bind(this);
+        this.percentButton = this.percentButton.bind(this);
     }
 
     buttonClicked = (digit) => {
@@ -54,6 +55,15 @@ class Calculator extends Component {
             //zero index because thats where the negitive sign will be.
             displayValue: displayValue.charAt(0) === '-' ? displayValue.substr(1) : '-' + displayValue
         })
+    }
+
+    percentButton = () => {
+        var { displayValue } = this.state
+        var percent = parseFloat(displayValue)
+        this.setState({
+            displayValue: String(percent/100)
+        })
+
     }
 
     clearDisplay = () => {
@@ -119,6 +129,7 @@ class Calculator extends Component {
                         </button>
                         <button
                             type="button"
+                            onClick={() => this.percentButton()}
                             className="btn btn-secondary top-row">%
                         </button>
                         <button
