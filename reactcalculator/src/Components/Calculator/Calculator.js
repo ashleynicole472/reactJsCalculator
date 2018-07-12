@@ -6,7 +6,9 @@ class Calculator extends Component {
         super(props);
         this.state ={
             equals: '',
-            displayValue: '0'
+            displayValue: '0',
+            waitingForOperator: false,
+            operator: null
         }
         this.equals = this.equals.bind(this);
         this.buttonClicked = this.buttonClicked.bind(this);
@@ -14,27 +16,45 @@ class Calculator extends Component {
         this.clearDisplay = this.clearDisplay.bind(this);
         this.toggleNegitive = this.toggleNegitive.bind(this);
         this.percentButton = this.percentButton.bind(this);
+        this.operationClicked = this.operationClicked.bind(this);
     }
 
     buttonClicked = (digit) => {
         // console.log(`${digit} was clicked`);
-        var { displayValue } = this.state;
-        //allows the display number to change from 0 to whatever
-        //digit the user pressed, can be more then just one single digit at a time
-        //if the display number is zero then leave it at zero else change to the
-        //selected digets
-        this.setState({
-            displayValue: displayValue === '0' ? String(digit) : displayValue + digit
-        })
+        var { displayValue, waitingForOperator } = this.state;
+        // if an operation has been selected then change the display value to the new selected value then
+        //change waitingForOperator to false again so if the user needs to perform multiple operations.
+        //else if the user has not selected an operation yet then allow the display to still have the zero or be updated with the
+        //users selected digits.
+        if(waitingForOperator){
+
+            this.setState({
+                displayValue: String(digit)
+            })
+        } else {
+            this.setState({
+                //allows the display number to change from 0 to whatever
+                //digit the user pressed, can be more then just one single digit at a time
+                //if the display number is zero then leave it at zero else change to the
+                //selected digets
+                displayValue: displayValue === '0' ? String(digit) : displayValue + digit
+            })
+        }
+
         // console.log(this.state.displayValue);
     };
 
     dotClicked = () => {
-        var { displayValue } = this.state
+        var { displayValue, waitingForOperator } = this.state
         //allows for only one decimal point to be within the selected digits
         //indexOf function finds whatever argument is within the perentesis and checks if
         //its within the given string.
-        if(displayValue.indexOf('.', -1)){
+        if(waitingForOperator){
+            this.setState({
+                displayValue: '.',
+                waitingForOperator: false
+            })
+        } else {(displayValue.indexOf('.') === -1)
             this.setState({
                 //makes displayValue whatever it previously was plus a decimal at the index the user selected
                 displayValue: displayValue + '.'
@@ -71,6 +91,20 @@ class Calculator extends Component {
         })
     }
 
+    operationClicked = (operator) => {
+        console.log(`${operator} inside operator`);
+
+        this.setState({
+            //waitingForOperator is set to false to start because the user needs to select the first set of digits they
+            //want to work with, then the waitingForOperator is changed to true when the user selects + - / * or =
+
+            waitingForOperator: true,
+            //operator is null to start because we wont know what operatr the user wants to select until they select it,
+            //and then the operator will be updated within state.
+            operator: operator
+        })
+    }
+
     equals = () => {
         var { displayValue } = this.state;
         //eval() will evaluate a string. example: eval("2 + 2") = 4
@@ -92,6 +126,7 @@ class Calculator extends Component {
                     <div className="col-sm-4">
                     </div>
                     <div className="col-sm-3">
+                    <pre>{JSON.stringify(this.state, null, 2)}</pre>
                         <div className="form-group">
                             <label
                                 className="col-form-label col-form-label-lg"
@@ -130,7 +165,7 @@ class Calculator extends Component {
                         </button>
                         <button
                             type="button"
-                            onClick={() => this.buttonClicked("/")}
+                            onClick={() => this.operationClicked("/")}
                             id="division-button"
                             className="btn btn-warning operations">÷
                         </button>
@@ -157,7 +192,7 @@ class Calculator extends Component {
                         </button>
                         <button
                             type="button"
-                            onClick={() => this.buttonClicked("*")}
+                            onClick={() => this.operationClicked("*")}
                             className="btn btn-warning middle-row">x
                         </button>
                     </div>
@@ -183,7 +218,7 @@ class Calculator extends Component {
                         </button>
                         <button
                             type="button"
-                            onClick={() => this.buttonClicked("-")}
+                            onClick={() => this.operationClicked("-")}
                             className="btn btn-warning middle-row">−
                         </button>
                     </div>
@@ -209,7 +244,7 @@ class Calculator extends Component {
                         </button>
                         <button
                             type="button"
-                            onClick={() => this.buttonClicked("+")}
+                            onClick={() => this.operationClicked("+")}
                             className="btn btn-warning middle-row">+
                         </button>
                     </div>
