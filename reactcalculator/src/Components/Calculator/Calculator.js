@@ -119,11 +119,13 @@ class Calculator extends Component {
                         <button
                             type="button"
                             onClick={() => this.toggleNegitive()}
+                            id="toggle"
                             className="btn btn-secondary top-row">+ / -
                         </button>
                         <button
                             type="button"
                             onClick={() => this.percentButton()}
+                            id="percent"
                             className="btn btn-secondary top-row">%
                         </button>
                         <button
@@ -225,6 +227,7 @@ class Calculator extends Component {
                         <button
                             type="button"
                             onClick={() => this.dotClicked(".")}
+                            id="point"
                             className="btn btn-info bottom-row">.
                         </button>
                         <button

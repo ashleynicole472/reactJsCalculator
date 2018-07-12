@@ -1,5 +1,4 @@
 .btn {
-    margin-right: 10px;
     font-size: 25px;
 }
 
@@ -29,21 +28,41 @@
 }
 
 #zero-button {
-    padding-left: 65px;
-    padding-right: 70px;
+    padding-left: 50px;
+    padding-right: 45px;
+    margin-right: 5px;
+}
+
+#point {
+    padding-left: 35px;
+    padding-right: 35px;
+    margin-right: 5px;
 }
 
 #equals-button {
-    padding-left: 55px;
-    padding-right: 75px;
+    padding-left: 65px;
+    padding-right: 55px;
+    margin-left: 5px;
 }
 
 #clear-button {
     padding-left: 20px;
     padding-right: 20px;
+    margin-right: 20px;
+}
+
+#toggle{
+    padding-left: 10px;
+    padding-right: 13px;
+}
+
+#percent{
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 27px;
 }
 
 #division-button {
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: 25px;
+    padding-left: 25px;
 }
