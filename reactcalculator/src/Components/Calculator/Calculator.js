@@ -6,22 +6,19 @@ class Calculator extends Component {
         super(props);
         this.state ={
             equals: '',
-            displayValue: '0',
-            waitingForOperator: false,
-            operator: null
+            displayValue: '0'
         }
         this.equals = this.equals.bind(this);
         this.buttonClicked = this.buttonClicked.bind(this);
         this.dotClicked = this.dotClicked.bind(this);
         this.clearDisplay = this.clearDisplay.bind(this);
-        this.operationClicked = this.operationClicked.bind(this);
         this.toggleNegitive = this.toggleNegitive.bind(this);
         this.percentButton = this.percentButton.bind(this);
     }
 
     buttonClicked = (digit) => {
         // console.log(`${digit} was clicked`);
-        var { equation, displayValue } = this.state;
+        var { displayValue } = this.state;
         //allows the display number to change from 0 to whatever
         //digit the user pressed, can be more then just one single digit at a time
         //if the display number is zero then leave it at zero else change to the
@@ -37,9 +34,9 @@ class Calculator extends Component {
         //allows for only one decimal point to be within the selected digits
         //indexOf function finds whatever argument is within the perentesis and checks if
         //its within the given string.
-        if(displayValue.indexOf('.') === -1){
+        if(displayValue.indexOf('.', -1)){
             this.setState({
-                //makes displayValue whatever it previously was plus a decimal
+                //makes displayValue whatever it previously was plus a decimal at the index the user selected
                 displayValue: displayValue + '.'
             })
         }
@@ -74,10 +71,6 @@ class Calculator extends Component {
         })
     }
 
-    operationClicked = (operator) => {
-        console.log(operator);
-    }
-
     equals = () => {
         var { displayValue } = this.state;
         //eval() will evaluate a string. example: eval("2 + 2") = 4
@@ -90,6 +83,7 @@ class Calculator extends Component {
         })
         // console.log(`${this.state.finalTotal} this is the sate for final total`);
     }
+
     render(){
         const { displayValue } = this.state
         return(
