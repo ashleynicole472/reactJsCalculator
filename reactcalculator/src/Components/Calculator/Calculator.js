@@ -6,9 +6,10 @@ class Calculator extends Component {
         super(props);
         this.state ={
             equals: '',
-            displayValue: '0',
-            waitingForOperator: false,
-            operator: null
+            displayValue: '0'
+            //,
+            // waitingForOperator: false,
+            // operator: null
         }
         this.equals = this.equals.bind(this);
         this.buttonClicked = this.buttonClicked.bind(this);
@@ -16,7 +17,7 @@ class Calculator extends Component {
         this.clearDisplay = this.clearDisplay.bind(this);
         this.toggleNegitive = this.toggleNegitive.bind(this);
         this.percentButton = this.percentButton.bind(this);
-        this.operationClicked = this.operationClicked.bind(this);
+        // this.operationClicked = this.operationClicked.bind(this);
     }
 
     buttonClicked = (digit) => {
@@ -92,19 +93,19 @@ class Calculator extends Component {
         })
     }
 
-    operationClicked = (operator) => {
-        console.log(`${operator} inside operator`);
-
-        this.setState({
-            //waitingForOperator is set to false to start because the user needs to select the first set of digits they
-            //want to work with, then the waitingForOperator is changed to true when the user selects + - / * or =
-
-            waitingForOperator: true,
-            //operator is null to start because we wont know what operatr the user wants to select until they select it,
-            //and then the operator will be updated within state.
-            operator: operator
-        })
-    }
+    // operationClicked = (operator) => {
+    //     console.log(`${operator} inside operator`);
+    //
+    //     this.setState({
+    //         //waitingForOperator is set to false to start because the user needs to select the first set of digits they
+    //         //want to work with, then the waitingForOperator is changed to true when the user selects + - / * or =
+    //
+    //         waitingForOperator: true,
+    //         //operator is null to start because we wont know what operatr the user wants to select until they select it,
+    //         //and then the operator will be updated within state.
+    //         operator: operator
+    //     })
+    // }
 
     equals = () => {
         var { displayValue } = this.state;
@@ -127,7 +128,6 @@ class Calculator extends Component {
                     <div className="col-sm-4">
                     </div>
                     <div className="col-sm-3">
-                    <pre>{JSON.stringify(this.state, null, 2)}</pre>
                         <div className="form-group">
                             <label
                                 className="col-form-label col-form-label-lg"
@@ -166,7 +166,7 @@ class Calculator extends Component {
                         </button>
                         <button
                             type="button"
-                            onClick={() => this.operationClicked("/")}
+                            onClick={() => this.buttonClicked("/")}
                             id="division-button"
                             className="btn btn-warning operations">÷
                         </button>
@@ -193,7 +193,7 @@ class Calculator extends Component {
                         </button>
                         <button
                             type="button"
-                            onClick={() => this.operationClicked("*")}
+                            onClick={() => this.buttonClicked("*")}
                             className="btn btn-warning middle-row">x
                         </button>
                     </div>
@@ -219,7 +219,7 @@ class Calculator extends Component {
                         </button>
                         <button
                             type="button"
-                            onClick={() => this.operationClicked("-")}
+                            onClick={() => this.buttonClicked("-")}
                             className="btn btn-warning middle-row">−
                         </button>
                     </div>
@@ -245,7 +245,7 @@ class Calculator extends Component {
                         </button>
                         <button
                             type="button"
-                            onClick={() => this.operationClicked("+")}
+                            onClick={() => this.buttonClicked("+")}
                             className="btn btn-warning middle-row">+
                         </button>
                     </div>
